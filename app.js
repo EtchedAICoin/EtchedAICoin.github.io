@@ -2,6 +2,8 @@ let web3;
 let contract;
 
 const contractAddress = '0xBfb0671aDaF9DF01BE251007ebad748E621f6b1D';
+const myDappURL = 'https://etchedaicoin.github.io/';
+
 
 window.addEventListener('load', async () => {
     if (typeof window.ethereum !== 'undefined') {
@@ -16,6 +18,11 @@ window.addEventListener('load', async () => {
 });
 
 async function connectWallet() {
+
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    if (isMobile && window.ethereum) {
+        window.location.href = myDappURL;
+    } 
     try {
         await window.ethereum.request({ method: 'eth_requestAccounts' });
         const chainId = '0x38'; // BSC mainnet chain ID (56 in decimal)
