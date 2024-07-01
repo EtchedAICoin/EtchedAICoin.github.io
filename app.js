@@ -2,7 +2,9 @@ let web3;
 let contract;
 
 const contractAddress = '0xBfb0671aDaF9DF01BE251007ebad748E621f6b1D';
-const myDappURL = 'https://etchedaicoin.github.io/';
+const myDappURL = 'etchedaicoin.github.io/';
+const metamaskURL = "https://metamask.app.link/dapp/";
+const deepURL = metamaskURL + myDappURL;
 
 
 window.addEventListener('load', async () => {
@@ -21,7 +23,7 @@ async function connectWallet() {
 
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
     if (isMobile && window.ethereum) {
-        window.location.href = myDappURL;
+        window.location.href = deepURL;
     } 
     try {
         await window.ethereum.request({ method: 'eth_requestAccounts' });
