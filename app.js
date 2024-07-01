@@ -22,7 +22,7 @@ window.addEventListener('load', async () => {
         web3 = new Web3(window.ethereum);
         document.getElementById('connectButton').addEventListener('click', connectWallet);
         document.getElementById('bnbButton').addEventListener('click', buyWithBNB);
-        document.getElementById('eaicButton').addEventListener('click', buyWithEAIC);
+        document.getElementById('etchButton').addEventListener('click', buyWithETCH);
     } 
     // else {
     //     alert('MetaMask is not installed!');
@@ -30,6 +30,10 @@ window.addEventListener('load', async () => {
 });
 
 async function connectWallet() {
+
+    if (typeof window.ethereum !== 'undefined') {
+        web3 = new Web3(window.ethereum);
+    }
 
     // const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
     // console.log(isMobile)
@@ -39,6 +43,7 @@ async function connectWallet() {
     // } 
 
     try {
+        const accounts = await web3.eth.getAccounts();
         await window.ethereum.request({ method: 'eth_requestAccounts' });
         const chainId = '0x38'; // BSC mainnet chain ID (56 in decimal)
         try {
@@ -101,10 +106,10 @@ async function buyWithBNB() {
     }
 }
 
-async function buyWithEAIC() {
+async function buyWithETCH() {
     try {
         const accounts = await web3.eth.getAccounts();
-        const eaicAmount = document.getElementById('eaicAmount').value;
+        const eaicAmount = document.getElementById('etchAmount').value;
         const bnbAmount = eaicAmount / 1000;
         const weiAmount = web3.utils.toWei(bnbAmount.toString(), 'ether');
 
