@@ -4,18 +4,18 @@ let contract;
 const contractAddress = '0xBfb0671aDaF9DF01BE251007ebad748E621f6b1D';
 const deepURL = "https://metamask.app.link/dapp/etchedaicoin.github.io/";
 
-function detectDevice() {
-    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-    if (/android/i.test(userAgent)) {
-        return "phone";
-    }
-    if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-        return "phone";
-    }
-    return "pc";
-}
+// function detectDevice() {
+//     const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+//     if (/android/i.test(userAgent)) {
+//         return "phone";
+//     }
+//     if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+//         return "phone";
+//     }
+//     return "pc";
+// }
 
-const deviceType = detectDevice();
+// const deviceType = detectDevice();
 
 window.addEventListener('load', async () => {
     if (typeof window.ethereum !== 'undefined') {
@@ -32,11 +32,12 @@ window.addEventListener('load', async () => {
 async function connectWallet() {
 
     // const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    // console.log(isMobile)
+    // // const isMobile = (deviceType=="phone")
+    // if (isMobile && window.ethereum) { //  && window.ethereum
+    //     window.location.href = deepURL;
+    // } 
 
-    const isMobile = (deviceType=="phone")
-    if (isMobile) { //  && window.ethereum
-        window.location.href = deepURL;
-    } 
     try {
         await window.ethereum.request({ method: 'eth_requestAccounts' });
         const chainId = '0x38'; // BSC mainnet chain ID (56 in decimal)
@@ -66,6 +67,7 @@ async function connectWallet() {
                         ],
                     });
                 } catch (addError) {
+                    window.location.href = deepURL;
                     console.error(addError);
                 }
             }
