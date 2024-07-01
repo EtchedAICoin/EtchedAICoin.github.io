@@ -2357,6 +2357,7 @@
 
 		}
 
+
 /* Icon */
 
 	.icon {
@@ -2657,6 +2658,7 @@
 		-webkit-align-items: center;
 		-ms-align-items: center;
 		align-items: center;
+		justify-content: center; /* Center the container */ /* add */
 	}
 
 		.spotlight > * {
@@ -2668,10 +2670,12 @@
 			-webkit-flex-grow: 0;
 			-ms-flex-grow: 0;
 			flex-grow: 0;
+			text-align: left;/* add */
 		}
 
 		.spotlight > * {
-			width: 50%;
+			/* width: 50%; */  /* add */
+			width: 90%;
 		}
 
 		.spotlight p:last-child {
@@ -2679,7 +2683,9 @@
 		}
 
 		.spotlight .inner {
-			padding: 6rem;
+			/* padding: 6rem; */ /* add */
+			padding: 3rem;
+			
 		}
 
 		.spotlight .image {
@@ -2754,6 +2760,8 @@
 				-ms-align-items: center;
 				align-items: center;
 				text-align: center;
+		justify-content: center; /* Center the container */ /* add */
+
 			}
 
 				.spotlight > * {
